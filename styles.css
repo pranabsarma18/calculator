@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+.main {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    height: 50px;
+    border: 1px solid maroon
+}
+
+.buttons {
+    display: flex;
+}
+
+.operators {
+    display: flex;
+    flex-wrap: wrap;
+}
+
