@@ -14,9 +14,6 @@ function devide(a, b) {
     return a/b
 }
 
-let operand1
-let operator
-let operand2
 
 function operate(operator, operand1, operand2) {
     if (operator === '+') {
@@ -35,31 +32,66 @@ function operate(operator, operand1, operand2) {
 
 function updateNumber(value) {
     const display =document.querySelector('.display')
-    display.textContent = ''
     display.textContent = value
 }
 
-let inputs = []
+let result
+let first = ''
+let second = ''
+let operator = ''
+let beforeOperand = true
 const button = document.addEventListener('click', (e) => {
     console.log(e.target.value)
     console.log(e.target)
-    console.log(inputs)
     if ((e.target.value) === '=') {
-        num1 = Number(inputs[0])
-        operator = inputs[1]
-        num2 = Number(inputs[2])
-        result = operate(operator, num1, num2)
         updateNumber(result)
-        inputs = []
+        if (result) {
+            updateNumber(result)
+            first = result
+            beforeOperand = false
+        }
+        else if (!(first) || !(second)){
+            result = ''
+            first = ''
+            second = ''
+            operator = ''
+            beforeOperand = true
+        }
     }
     else if (e.target.textContent === 'Clear') {
-        inputs = []
+        first = ''
+        second = ''
+        operator = ''
+        result = ''
+        beforeOperand = true
         const display =document.querySelector('.display')
         display.textContent = ''
     }
+    else if (!isNaN(e.target.value) || e.target.value === '0') {
+        if (beforeOperand) {
+            first = first + e.target.value
+            updateNumber(first)
+        }
+        else {
+            second = second + e.target.value
+            result = operate(operator, Number(first), Number(second))
+            console.log(second)
+            updateNumber(second)
+            second = ''
+            operator = ''
+        }
+        
+    }
     else {
-        inputs.push(e.target.value)
+        operator = e.target.value
         updateNumber(e.target.value)
+        beforeOperand = false
+        if (second) {
+            result = operate(operator, Number(first), Number(second))
+            first = result
+            second = ''
+            operator = ''
+        }
     }
     }
 )
