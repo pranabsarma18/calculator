@@ -40,6 +40,7 @@ let first = ''
 let second = ''
 let operator = ''
 let beforeOperand = true
+let disabledButton
 const button = document.addEventListener('click', (e) => {
     console.log(e.target.value)
     console.log(e.target)
@@ -59,6 +60,7 @@ const button = document.addEventListener('click', (e) => {
         }
     }
     else if (e.target.textContent === 'Clear') {
+        if (disabledButton) disabledButton.disabled = false
         first = ''
         second = ''
         operator = ''
@@ -75,22 +77,22 @@ const button = document.addEventListener('click', (e) => {
         else {
             second = second + e.target.value
             result = operate(operator, Number(first), Number(second))
-            console.log(second)
+            console.log(result)
             updateNumber(second)
-            second = ''
-            operator = ''
+            disabledButton.disabled = false 
         }
         
     }
     else {
+        if (disabledButton) disabledButton.disabled = false
         operator = e.target.value
-        updateNumber(e.target.value)
+        e.target.disabled = true;
+        disabledButton = e.target
         beforeOperand = false
         if (second) {
-            result = operate(operator, Number(first), Number(second))
+            updateNumber(result)
             first = result
             second = ''
-            operator = ''
         }
     }
     }
