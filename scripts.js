@@ -25,7 +25,7 @@ function operate(operator, operand1, operand2) {
     else if (operator === 'x') {
         return multiply(operand1, operand2)
     }
-    else if (operator === '%') {
+    else if (operator === '÷') {
         return devide(operand1, operand2)
     }
 }
