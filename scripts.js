@@ -41,15 +41,16 @@ let second = ''
 let operator = ''
 let beforeOperand = true
 let disabledButton
+let resultShown = false
 const button = document.addEventListener('click', (e) => {
     console.log(e.target.value)
     console.log(e.target)
     if ((e.target.value) === '=') {
-        updateNumber(result)
-        if (result) {
-            updateNumber(result)
+        if (result || result === 0) {
+            updateNumber(result.toFixed(4))
             first = result
             beforeOperand = false
+            resultShown = true
         }
         else if (!(first) || !(second)){
             result = ''
@@ -70,18 +71,25 @@ const button = document.addEventListener('click', (e) => {
         display.textContent = ''
     }
     else if (!isNaN(e.target.value) || e.target.value === '0') {
-        if (beforeOperand) {
+        if (beforeOperand && !resultShown) {
             first = first + e.target.value
             updateNumber(first)
         }
-        else {
+        else if (!resultShown){
             second = second + e.target.value
             result = operate(operator, Number(first), Number(second))
             console.log(result)
             updateNumber(second)
             disabledButton.disabled = false 
         }
-        
+        else if (resultShown){
+            result = ''
+            second = ''
+            operator = ''
+            resultShown = false
+            first = e.target.value
+            updateNumber(first)
+        }
     }
     else {
         if (disabledButton) disabledButton.disabled = false
@@ -90,7 +98,8 @@ const button = document.addEventListener('click', (e) => {
         disabledButton = e.target
         beforeOperand = false
         if (second) {
-            updateNumber(result)
+            updateNumber(result.toFixed(4))
+            console.log(result.toFixed(4))
             first = result
             second = ''
         }
