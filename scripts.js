@@ -32,6 +32,7 @@ function operate(operator, operand1, operand2) {
 
 function updateNumber(value) {
     const display =document.querySelector('.display')
+    display.style.fontSize = "64px";
     display.textContent = value
 }
 
@@ -47,12 +48,13 @@ const button = document.addEventListener('click', (e) => {
     console.log(e.target)
     if ((e.target.value) === '=') {
         if (result || result === 0) {
+            console.log(result)
             updateNumber(result.toFixed(4))
             first = result
             beforeOperand = false
             resultShown = true
         }
-        else if (!(first) || !(second)){
+        else if (!first){
             result = ''
             first = ''
             second = ''
@@ -70,8 +72,8 @@ const button = document.addEventListener('click', (e) => {
         const display =document.querySelector('.display')
         display.textContent = ''
     }
-    else if (!isNaN(e.target.value) || e.target.value === '0') {
-        if (beforeOperand && !resultShown) {
+    else if (!isNaN(e.target.value) || e.target.value === '0'){
+        if ((beforeOperand && !resultShown)) {
             first = first + e.target.value
             updateNumber(first)
         }
@@ -97,6 +99,7 @@ const button = document.addEventListener('click', (e) => {
         e.target.disabled = true;
         disabledButton = e.target
         beforeOperand = false
+        resultShown = false
         if (second) {
             updateNumber(result.toFixed(4))
             console.log(result.toFixed(4))
