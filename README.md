@@ -1,4 +1,5 @@
 # 🧮 Calculator App
+🔗 Live Demo: https://pranabsarma18.github.io/calculator/
 
 A basic calculator built using **HTML, CSS, and JavaScript** as part of
 the Odin Foundation Course.
