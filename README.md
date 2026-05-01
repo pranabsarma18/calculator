@@ -24,8 +24,8 @@ the Odin Foundation Course.
 
 ## 🛠️ Technologies Used
 
--   HTML\
--   CSS (Flexbox for layout)\
+-   HTML
+-   CSS (Flexbox for layout)
 -   JavaScript (DOM manipulation & event handling)
 
 ------------------------------------------------------------------------
@@ -56,17 +56,17 @@ The calculator is built using a **state-based approach**:
 
 ## ⚠️ Limitations
 
--   Does not support decimal input yet\
--   No keyboard input support\
+-   Does not support decimal input yet
+-   No keyboard input support
 -   Not responsive (desktop-focused)
 
 ------------------------------------------------------------------------
 
 ## 📌 Future Improvements
 
--   Add decimal (`.`) support\
--   Add backspace functionality\
--   Add keyboard support\
+-   Add decimal (`.`) support
+-   Add backspace functionality
+-   Add keyboard support
 -   Improve UI styling
 
 ------------------------------------------------------------------------
@@ -75,9 +75,9 @@ The calculator is built using a **state-based approach**:
 
 This project helped in understanding:
 
--   DOM manipulation\
--   Event handling\
--   State management in JavaScript\
+-   DOM manipulation
+-   Event handling
+-   State management in JavaScript
 -   Building interactive UI logic
 
 ------------------------------------------------------------------------
